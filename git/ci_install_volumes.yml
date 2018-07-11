@@ -1,0 +1,30 @@
+---
+
+- hosts: VIA-CI
+  become: true
+  ignore_errors: yes
+
+  tasks:
+    - name: create /mnt/archive_completed
+      shell: mkdir /mnt/archive_completed
+
+    - name: create /mnt/archived_accounts
+      shell: mkdir /mnt/archived_accounts
+
+    - name: mount /mnt/archive_completed
+      mount:
+        path: /mnt/archive_completed
+        src: 10.11.20.201:/vol/archive_completed
+        state: mounted
+        opts: rw
+        fstype: nfs4
+
+    - name: mount /mnt/archived_accounts
+      mount:
+        path: /mnt/archived_accounts
+        src: 10.11.20.201:/vol/archived_accounts
+        state: mounted
+        opts: rw
+        fstype: nfs4
+
+# IDEMPOTENT
