@@ -1,0 +1,16 @@
+---
+
+- hosts: host_name
+  become: true
+  ignore_errors: yes
+
+  tasks:
+    - replace:
+        path: path_of_the_location_of_the_file_to_be_modified
+        regexp: 'entry_to_be_replaced'
+        replace: 'new_entry'
+        backup: yes
+
+    - name: unmount 'path'
+      shell: umount 'path'
+
