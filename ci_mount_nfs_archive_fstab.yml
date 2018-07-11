@@ -1,0 +1,15 @@
+---
+
+- hosts: host_name
+  become: true
+  ignore_errors: yes
+
+  tasks:
+    - replace:
+        path: path
+        regexp: 'old_path_to_be_replaced'
+        replace: 'new_path'
+        backup: yes
+
+    - name: unmount 'path'
+      shell: umount 'path'
