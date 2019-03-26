@@ -1,0 +1,20 @@
+---
+- name: Create an EC2 instance in AWS
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+
+  tasks:
+    - name: EC2
+      ec2:
+        key_name: myfirstinstance
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        keypair: "{{keypair}}"
+        region: "{{region}}"
+        wait: yes
+        group: default
+        count: 1
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        assign_public_ip: yes
