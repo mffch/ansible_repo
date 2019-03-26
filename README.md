@@ -1,3 +1,3 @@
 # ansible_repo
 
-This repo will contain different configuration done with ansible.
+Ansible is a very powerful tool used for automation. This repo contains diffrent plays and roles done in AWS.
